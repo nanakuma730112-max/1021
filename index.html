@@ -1,1 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>三角関数のグラフ学習アプリ</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>三角関数のグラフ</h1>
+  <div class="grp" id="tabs" role="tablist" aria-label="タブ">
+    <button data-tab="1" class="on">① 基本グラフ</button>
+    <button data-tab="2">② グラフの変化</button>
+  </div>
+  <div class="grp" id="fns" aria-label="関数の選択">
+    <button data-fn="sin" class="on">sin</button>
+    <button data-fn="cos">cos</button>
+    <button data-fn="tan">tan</button>
+  </div>
+  <div class="grp" id="units" aria-label="角の単位">
+    <button data-unit="deg" class="on">度数法</button>
+    <button data-unit="rad">弧度法</button>
+  </div>
+  <button id="reset" class="reset">リセット</button>
+</header>
 
+<main>
+  <section class="stage">
+    <div class="box circ"><canvas id="cc"></canvas></div>
+    <div class="box graph"><canvas id="cg"></canvas></div>
+  </section>
+
+  <section class="panel">
+    <div id="info" class="info" aria-live="off"></div>
+    <div class="ctrl">
+      <button id="play">▶ 再生</button>
+      <button id="back" title="角度を少し戻す">◀ 15°</button>
+      <button id="fwd" title="角度を少し進める">15° ▶</button>
+      <label>速さ
+        <select id="speed">
+          <option value="0.25">×0.25</option>
+          <option value="0.5">×0.5</option>
+          <option value="1" selected>×1</option>
+          <option value="2">×2</option>
+          <option value="4">×4</option>
+        </select>
+      </label>
+      <span class="sep"></span>
+      <button id="zo">− 縮小</button>
+      <button id="zi">＋ 拡大</button>
+      <button id="zr">表示範囲を戻す</button>
+    </div>
+    <div id="t2" class="t2" hidden>
+      <label><span id="la">振幅 a</span><input type="range" id="a" min="-3" max="3" step="0.25" value="1"><output id="oa"></output></label>
+      <label><span>周期 b</span><input type="range" id="b" min="0.25" max="4" step="0.25" value="1"><output id="ob"></output></label>
+      <label><span>横 c</span><input type="range" id="c" min="-360" max="360" step="15" value="0"><output id="oc"></output></label>
+      <label><span>縦 d</span><input type="range" id="d" min="-3" max="3" step="0.25" value="0"><output id="od"></output></label>
+      <div class="ov">
+        <label class="chk"><input type="checkbox" id="sb" checked>変化前を表示</label>
+        <button id="nb">いまの式を基準にする</button>
+        <button id="ro">重ね合わせを解除</button>
+      </div>
+    </div>
+    <p class="help">操作：単位円をドラッグして点を回す（何周でも可）／グラフはドラッグで移動、ホイールで拡大縮小。</p>
+  </section>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
